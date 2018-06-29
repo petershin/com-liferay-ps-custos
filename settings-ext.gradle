@@ -1,0 +1,21 @@
+String projectPathPrefix = properties["project.path.prefix"]
+
+rootDir.eachDir {
+	File subprojectDir ->
+
+	File srcDir = new File(subprojectDir, "src")
+
+	File applicationPropertiesFile = new File(srcDir, "main/resources/application.properties")
+
+	if (!srcDir.exists() || applicationPropertiesFile.exists()) {
+		return
+	}
+
+	String subprojectName = "${projectPathPrefix}:${subprojectDir.name}"
+
+	include subprojectName
+
+	ProjectDescriptor projectDescriptor = project(subprojectName)
+
+	projectDescriptor.projectDir = subprojectDir
+}
