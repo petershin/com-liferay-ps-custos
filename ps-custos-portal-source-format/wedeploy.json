@@ -1,0 +1,15 @@
+{
+	"cpu": 2,
+	"healthCheck": {
+		"interval": 10,
+		"retries": 30,
+		"startPeriod": 120,
+		"url": "localhost:8080/status"
+	},
+	"id": "pscustosportalsourceformat",
+	"memory": 4096,
+	"volumes": {
+		"pscustosportalsourceformatgradle": "/home/gradle/.gradle"
+	},
+	"zeroDowntime": false
+}
